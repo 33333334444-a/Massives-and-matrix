@@ -3,7 +3,6 @@ using namespace std;
 
 int main() {
 
-	
 	int rowCount;
 	int columnCount;
 
@@ -12,16 +11,16 @@ int main() {
 	cout << "Enter column count: ";
 	cin >> columnCount;
 
-	int matrix[10][10];
+	int const maxSize = 10;
+	int matrix[maxSize][maxSize];
 
-	if (rowCount < 1 or rowCount > 10 or
-		columnCount < 1 or columnCount > 10) {
+	if (rowCount < 1 || rowCount > maxSize ||
+		columnCount < 1 || columnCount > maxSize) {
 		cout << "Invalid size!" << endl;
 		return 0;
 	}
 
 	for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
-
 		for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex) {
 			cin >> matrix[rowIndex][columnIndex];
 		}
@@ -29,17 +28,25 @@ int main() {
 
 	for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
 		int rowSum = 0;
-
 		for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex) {
-
-			if (matrix[rowIndex][columnIndex] > 0 and
+			if (matrix[rowIndex][columnIndex] > 0 &&
 				matrix[rowIndex][columnIndex] % 2 == 0) {
 
 				rowSum = rowSum + matrix[rowIndex][columnIndex];
 			}
-
 		}
-		cout << "\n String " << rowIndex + 1 << " - " << rowSum << endl;
-		
+		cout << "\n";
+		cout << " String " << rowIndex + 1 << " - " << rowSum << endl;
 	}
+	cout << "\n";
+
+	for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
+		for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex) {
+			cout << matrix[rowIndex][columnIndex] << " ";
+		}
+		cout << endl;
+	}
+	cout << "\n";
+	system("pause");
+
 }
